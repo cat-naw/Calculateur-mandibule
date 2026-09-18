@@ -3,151 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Calculateur de mandibule</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #e8d2a8;
+    color: #3b2818;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+h1 {
+    text-align: center;
+    color: #5a321c;
+    margin: 0 0 25px 0;
+}
+
+
+/* =========================
+   STRUCTURE PRINCIPALE
+========================= */
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+
+/* =========================
+   TABLEAU DES UNITÉS
+========================= */
+
+.units {
+    width: 100%;
+}
+
+.unit-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f3dfb9;
+    border: 2px solid #9b7046;
+}
+
+.unit-table th,
+.unit-table td {
+    border: 1px solid #9b7046;
+    padding: 8px;
+    text-align: center;
+}
+
+.unit-table th {
+    color: #5a321c;
+    font-weight: bold;
+}
+
+.unit-table td:first-child {
+    text-align: left;
+}
+
+.unit-table input {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #9b7046;
+    border-radius: 4px;
+    background: #fff8e8;
+    color: #3b2818;
+    text-align: center;
+}
+
+
+/* =========================
+   COLONNE DE DROITE
+========================= */
+
+.parameters {
+    width: 100%;
+}
+
+
+/* =========================
+   TYPE D'ALLIANCE
+========================= */
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    color: #5a321c;
+    font-weight: bold;
+}
+
+select,
+.field input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #9b7046;
+    border-radius: 4px;
+    background: #fff8e8;
+    color: #3b2818;
+}
+
+
+/* =========================
+   ATTAQUE / DÉFENSE
+========================= */
+
+.mode {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.mode label {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.mode input {
+    width: auto;
+    margin-right: 5px;
+}
+
+
+/* =========================
+   BOUTON
+========================= */
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #9b7046;
+    border-radius: 4px;
+    background: #f3dfb9;
+    color: #3b2818;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #dcc397;
+}
+
+
+/* =========================
+   RÉSULTATS
+========================= */
+
+#resultat {
+    margin-top: 22px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
 
     body {
-        margin: 0;
-        padding: 20px;
-        background: #e8d2a8;
-        color: #3b2818;
-        font-family: Arial, sans-serif;
-    }
-
-    h1 {
-        text-align: center;
-        color: #5a321c;
-        margin-bottom: 25px;
+        padding: 15px;
     }
 
     .container {
-        display: flex;
-        gap: 30px;
-        max-width: 900px;
-        margin: auto;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
+        gap: 25px;
     }
 
-    .units {
-        flex: 1;
-    }
-
-    .unit-table {
+    .parameters {
         width: 100%;
-        border-collapse: collapse;
-        background: #f3dfb9;
-        border: 2px solid #9b7046;
     }
 
     .unit-table th,
     .unit-table td {
-        border: 1px solid #9b7046;
-        padding: 8px;
-        text-align: center;
+        padding: 7px 5px;
     }
 
-    .unit-table th {
-        color: #5a321c;
-    }
+}
 
-    .unit-table td:first-child {
-        text-align: left;
-    }
-
-    .unit-table input {
-        width: 100%;
-        padding: 7px;
-        border: 1px solid #9b7046;
-        background: #fff8e8;
-        color: #3b2818;
-        border-radius: 4px;
-        text-align: center;
-    }
-
-    .side {
-        width: 280px;
-    }
-
-    .mode {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-
-    .mode label {
-        cursor: pointer;
-    }
-
-    .mode input {
-        width: auto;
-    }
-
-    .field {
-        margin-bottom: 15px;
-    }
-
-    .field label {
-        display: block;
-        margin-bottom: 5px;
-        color: #5a321c;
-        font-weight: bold;
-    }
-
-    .field input,
-    .field select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #9b7046;
-        background: #fff8e8;
-        color: #3b2818;
-        border-radius: 4px;
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #9b7046;
-        border-radius: 4px;
-        background: #f3dfb9;
-        color: #3b2818;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    button:hover {
-        background: #dcc397;
-    }
-
-    #resultat {
-        margin-top: 20px;
-        line-height: 1.7;
-    }
-
-    @media (max-width: 700px) {
-        .container {
-            flex-direction: column;
-        }
-
-        .side {
-            width: 100%;
-        }
-    }
 </style>
 </head>
+
 
 <body>
 
 <h1>Calculateur de mandibule</h1>
 
+
 <div class="container">
 
-    <!-- =========================
-         UNITÉS
-    ========================== -->
+
+    <!-- =================================================
+         GAUCHE : UNITÉS
+    ================================================== -->
 
     <div class="units">
 
@@ -244,13 +311,41 @@
     </div>
 
 
-    <!-- =========================
-         CALCUL
-    ========================== -->
+    <!-- =================================================
+         DROITE : PARAMÈTRES + RÉSULTATS
+    ================================================== -->
 
-    <div class="side">
+    <div class="parameters">
 
-        <!-- Type de calcul -->
+
+        <!-- ALLIANCE -->
+
+        <div class="field">
+
+            <label for="alliance">
+                Type d'alliance
+            </label>
+
+            <select id="alliance">
+
+                <option value="1.10">
+                    Alliance guerrier (+10 %)
+                </option>
+
+                <option value="1.05">
+                    Neutre (+5 %)
+                </option>
+
+                <option value="1">
+                    Autre (aucun bonus)
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ATTAQUE / DÉFENSE -->
 
         <div class="mode">
 
@@ -276,31 +371,6 @@
         </div>
 
 
-        <!-- Alliance -->
-
-        <div class="field">
-
-            <label>Type d'alliance</label>
-
-            <select id="alliance">
-
-                <option value="1.10">
-                    Alliance guerrier (+10 %)
-                </option>
-
-                <option value="1.05">
-                    Neutre (+5 %)
-                </option>
-
-                <option value="1">
-                    Autre (aucun bonus)
-                </option>
-
-            </select>
-
-        </div>
-
-
         <!-- =========================
              ATTAQUE
         ========================== -->
@@ -309,19 +379,18 @@
 
             <div class="field">
 
-                <label>Bonus d'attaque</label>
+                <label for="bonusAttaque">
+                    Attaque observée
+                </label>
 
                 <input
                     type="number"
                     id="bonusAttaque"
-                    value="0"
-                    step="any">
+                    min="0"
+                    step="any"
+                    value="0">
 
             </div>
-
-            <button onclick="calculerAttaque()">
-                Calculer
-            </button>
 
         </div>
 
@@ -330,39 +399,52 @@
              DÉFENSE
         ========================== -->
 
-        <div id="defenseFields" style="display:none;">
+        <div
+            id="defenseFields"
+            style="display:none;">
 
             <div class="field">
 
-                <label>Unités tuées</label>
+                <label for="unitesTues">
+                    Unités tuées
+                </label>
 
                 <input
                     type="number"
                     id="unitesTues"
-                    value="0"
                     min="0"
-                    step="1">
+                    step="1"
+                    value="0">
 
             </div>
 
+
             <div class="field">
 
-                <label>Bonus de défense</label>
+                <label for="bonusDefense">
+                    Défense observée
+                </label>
 
                 <input
                     type="number"
                     id="bonusDefense"
-                    value="0"
-                    step="any">
+                    min="0"
+                    step="any"
+                    value="0">
 
             </div>
 
-            <button onclick="calculerDefense()">
-                Calculer
-            </button>
-
         </div>
 
+
+        <!-- BOUTON -->
+
+        <button onclick="calculer()">
+            Calculer
+        </button>
+
+
+        <!-- RÉSULTATS -->
 
         <div id="resultat"></div>
 
@@ -375,35 +457,36 @@
 
 /* =========================================================
    STATS DES UNITÉS
+
    [attaque, défense]
 
-   L'ordre est également l'ordre dans lequel
-   les unités sont tuées.
+   L'ordre correspond également à l'ordre
+   dans lequel les unités sont tuées.
 ========================================================= */
 
 const stats = [
 
-    [3, 3],      // Esclave
-    [6, 4],      // Maître esclave
-    [8, 7],      // Jeune soldate
-    [11, 10],    // Soldate
-    [17, 14],    // Soldate d'élite
-    [1, 27],     // Gardienne
-    [1, 35],     // Gardienne d'élite
-    [32, 10],    // Tirailleuse
-    [40, 12],    // Tirailleuse d'élite
-    [45, 35],    // Jeune légionnaire
-    [60, 45],    // Légionnaire
-    [65, 50],    // Légionnaire d'élite
-    [80, 1],     // Jeune tank
-    [140, 1],    // Tank
-    [160, 1]     // Tank d'élite
+    [3, 3],       // Esclave
+    [6, 4],       // Maître esclave
+    [8, 7],       // Jeune soldate
+    [11, 10],     // Soldate
+    [17, 14],     // Soldate d'élite
+    [1, 27],      // Gardienne
+    [1, 35],      // Gardienne d'élite
+    [32, 10],     // Tirailleuse
+    [40, 12],     // Tirailleuse d'élite
+    [45, 35],     // Jeune légionnaire
+    [60, 45],     // Légionnaire
+    [65, 50],     // Légionnaire d'élite
+    [80, 1],      // Jeune tank
+    [140, 1],     // Tank
+    [160, 1]      // Tank d'élite
 
 ];
 
 
 /* =========================================================
-   RÉCUPÉRATION DES QUANTITÉS
+   RÉCUPÉRER LES QUANTITÉS
 ========================================================= */
 
 function getQuantites() {
@@ -430,15 +513,22 @@ function changerMode() {
             'input[name="mode"]:checked'
         ).value;
 
+
     document.getElementById(
         "attaqueFields"
     ).style.display =
-        mode === "attaque" ? "block" : "none";
+        mode === "attaque"
+        ? "block"
+        : "none";
+
 
     document.getElementById(
         "defenseFields"
     ).style.display =
-        mode === "defense" ? "block" : "none";
+        mode === "defense"
+        ? "block"
+        : "none";
+
 
     document.getElementById(
         "resultat"
@@ -447,17 +537,38 @@ function changerMode() {
 
 
 /* =========================================================
+   CALCUL PRINCIPAL
+========================================================= */
+
+function calculer() {
+
+    const mode =
+        document.querySelector(
+            'input[name="mode"]:checked'
+        ).value;
+
+
+    if (mode === "attaque") {
+
+        calculerAttaque();
+
+    } else {
+
+        calculerDefense();
+
+    }
+
+}
+
+
+/* =========================================================
    ATTAQUE
 =========================================================
 
-   FDF =
-   somme(nombre × attaque)
+   FDF = somme des attaques
 
-   Attaque finale =
-   FDF × 1.05^mandibule × alliance
-
-   Le nombre entré dans "Bonus d'attaque"
-   correspond à la valeur observée.
+   Attaque observée =
+   FDF × 1.05^mandibule × bonus alliance
 ========================================================= */
 
 function calculerAttaque() {
@@ -466,11 +577,13 @@ function calculerAttaque() {
 
     let fdf = 0;
 
+
     for (let i = 0; i < stats.length; i++) {
 
         fdf +=
             quantites[i] *
             stats[i][0];
+
     }
 
 
@@ -495,35 +608,42 @@ function calculerAttaque() {
     let meilleureErreur = Infinity;
 
 
-    /*
-       On teste les niveaux de mandibule.
+    if (
+        fdf > 0 &&
+        attaqueObservee > 0
+    ) {
 
-       0 à 200 peut être augmenté facilement
-       si nécessaire.
-    */
+        /*
+           Recherche du niveau donnant
+           la valeur la plus proche.
 
-    if (fdf > 0 && attaqueObservee > 0) {
+           On teste jusqu'au niveau 200.
+        */
 
         for (let n = 0; n <= 200; n++) {
 
-            const coefficient =
+            const valeur =
+                fdf *
                 Math.pow(1.05, n) *
                 alliance;
 
-            const valeur =
-                fdf * coefficient;
 
             const erreur =
                 Math.abs(
-                    valeur - attaqueObservee
+                    valeur -
+                    attaqueObservee
                 );
+
 
             if (erreur < meilleureErreur) {
 
                 meilleureErreur = erreur;
                 niveau = n;
+
             }
+
         }
+
     }
 
 
@@ -539,19 +659,16 @@ function calculerAttaque() {
             Math.pow(1.05, niveau) *
             alliance;
 
+
         resultat +=
             "<br><strong>Mandibule :</strong> niveau " +
             niveau;
+
 
         resultat +=
             "<br><strong>Attaque calculée :</strong> " +
             formatNombre(attaqueCalculee);
 
-    } else {
-
-        resultat +=
-            "<br><strong>Mandibule :</strong> " +
-            "impossible à déterminer";
     }
 
 
@@ -565,21 +682,20 @@ function calculerAttaque() {
    DÉFENSE
 =========================================================
 
-   Les unités mortes sont retirées dans l'ordre
-   du tableau.
+   Les unités sont tuées dans l'ordre du tableau.
 
    Défense de base :
 
-   défense des vivantes
+   défense des unités vivantes
    +
-   10 % de la défense des mortes
+   10 % de la défense des unités mortes
 
    Puis :
 
    Défense finale =
    défense de base
    × 1.05^mandibule
-   × coefficient alliance
+   × bonus alliance
 ========================================================= */
 
 function calculerDefense() {
@@ -601,18 +717,20 @@ function calculerDefense() {
 
 
     let defenseVivante = 0;
+
     let defenseMorte = 0;
 
 
     /*
        Parcours dans l'ordre exact
-       des unités.
+       de destruction.
     */
 
     for (let i = 0; i < stats.length; i++) {
 
         const quantite =
             quantites[i];
+
 
         const defense =
             stats[i][1];
@@ -639,20 +757,25 @@ function calculerDefense() {
 
         mortsRestants -=
             tuees;
+
     }
 
 
     /*
-       Les unités mortes comptent à 10 %
+       Les morts comptent pour 10 %.
     */
 
-    const dixPourcent =
+    const dixPourcentMorts =
         defenseMorte * 0.10;
 
 
+    /*
+       Défense avant les bonus.
+    */
+
     const defenseBase =
         defenseVivante +
-        dixPourcent;
+        dixPourcentMorts;
 
 
     const defenseObservee =
@@ -687,13 +810,11 @@ function calculerDefense() {
 
         for (let n = 0; n <= 200; n++) {
 
-            const coefficient =
+            const valeur =
+                defenseBase *
                 Math.pow(1.05, n) *
                 alliance;
 
-            const valeur =
-                defenseBase *
-                coefficient;
 
             const erreur =
                 Math.abs(
@@ -706,8 +827,11 @@ function calculerDefense() {
 
                 meilleureErreur = erreur;
                 niveau = n;
+
             }
+
         }
+
     }
 
 
@@ -728,15 +852,11 @@ function calculerDefense() {
             "<br><strong>Mandibule :</strong> niveau " +
             niveau;
 
+
         resultat +=
             "<br><strong>Défense calculée :</strong> " +
             formatNombre(defenseCalculee);
 
-    } else {
-
-        resultat +=
-            "<br><strong>Mandibule :</strong> " +
-            "impossible à déterminer";
     }
 
 
@@ -745,6 +865,7 @@ function calculerDefense() {
         resultat +=
             "<br><br>⚠️ Le nombre d'unités tuées " +
             "dépasse le nombre d'unités présentes.";
+
     }
 
 
@@ -766,6 +887,7 @@ function formatNombre(nombre) {
             maximumFractionDigits: 4
         }
     );
+
 }
 
 </script>

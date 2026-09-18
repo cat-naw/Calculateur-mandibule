@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculateur de combat</title>
+<title>Calculateur de mandibule</title>
 
 <style>
     * {
@@ -27,7 +27,7 @@
     .container {
         display: flex;
         gap: 30px;
-        max-width: 1000px;
+        max-width: 900px;
         margin: auto;
         align-items: flex-start;
     }
@@ -46,7 +46,7 @@
     .unit-table th,
     .unit-table td {
         border: 1px solid #9b7046;
-        padding: 7px;
+        padding: 8px;
         text-align: center;
     }
 
@@ -65,14 +65,11 @@
 
     .side {
         width: 280px;
-        background: #f3dfb9;
-        border: 2px solid #9b7046;
-        padding: 15px;
     }
 
     .mode {
         display: flex;
-        gap: 15px;
+        gap: 20px;
         margin-bottom: 20px;
     }
 
@@ -96,7 +93,7 @@
 
     .field input {
         width: 100%;
-        padding: 7px;
+        padding: 8px;
         border: 1px solid #9b7046;
         background: #fff8e8;
         color: #3b2818;
@@ -106,10 +103,9 @@
     button {
         width: 100%;
         padding: 9px;
-        margin-top: 5px;
         border: 1px solid #9b7046;
         border-radius: 4px;
-        background: #e8d2a8;
+        background: #f3dfb9;
         color: #3b2818;
         cursor: pointer;
         font-weight: bold;
@@ -124,7 +120,7 @@
         line-height: 1.7;
     }
 
-    @media (max-width: 750px) {
+    @media (max-width: 700px) {
         .container {
             flex-direction: column;
         }
@@ -138,10 +134,11 @@
 
 <body>
 
-<h1>Calculateur de combat</h1>
+<h1>Calculateur de mandibule</h1>
 
 <div class="container">
 
+    <!-- TABLEAU DES UNITÉS -->
     <div class="units">
 
         <table class="unit-table">
@@ -150,8 +147,6 @@
                 <tr>
                     <th>Unité</th>
                     <th>Nombre</th>
-                    <th>Attaque</th>
-                    <th>Défense</th>
                 </tr>
             </thead>
 
@@ -159,116 +154,86 @@
 
                 <tr>
                     <td>Esclave</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>3</td>
-                    <td>3</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Maître esclave</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>6</td>
-                    <td>4</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Jeune soldate</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>8</td>
-                    <td>7</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Soldate</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>11</td>
-                    <td>10</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Soldate d'élite</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>17</td>
-                    <td>14</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Gardienne</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>1</td>
-                    <td>27</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Gardienne d'élite</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>1</td>
-                    <td>35</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Tirailleuse</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>32</td>
-                    <td>10</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Tirailleuse d'élite</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>40</td>
-                    <td>12</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Jeune légionnaire</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>45</td>
-                    <td>35</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Légionnaire</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>60</td>
-                    <td>45</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Légionnaire d'élite</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>65</td>
-                    <td>50</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Jeune tank</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>80</td>
-                    <td>1</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Tank</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>140</td>
-                    <td>1</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
                 <tr>
                     <td>Tank d'élite</td>
-                    <td><input type="number" min="0" value="0" class="quantite"></td>
-                    <td>160</td>
-                    <td>1</td>
+                    <td><input type="number" min="0" value="0"></td>
                 </tr>
 
             </tbody>
-
         </table>
 
     </div>
 
 
+    <!-- PARTIE CALCUL -->
     <div class="side">
 
         <div class="mode">
@@ -295,7 +260,7 @@
         </div>
 
 
-        <!-- MODE ATTAQUE -->
+        <!-- ATTAQUE -->
 
         <div id="attaqueFields">
 
@@ -318,7 +283,7 @@
         </div>
 
 
-        <!-- MODE DEFENSE -->
+        <!-- DÉFENSE -->
 
         <div id="defenseFields" style="display:none;">
 
@@ -335,7 +300,6 @@
 
             </div>
 
-
             <div class="field">
 
                 <label>Bonus de défense</label>
@@ -347,7 +311,6 @@
                     step="any">
 
             </div>
-
 
             <button onclick="calculerDefense()">
                 Calculer
@@ -365,154 +328,240 @@
 
 <script>
 
-/* =========================================================
-   ATTAQUE
-   =========================================================
+/*
+===========================================================
+STATS DES UNITÉS
+===========================================================
 
-   FDF = somme des attaques des unités.
+Ordre :
+1. Esclave
+2. Maître esclave
+3. Jeune soldate
+4. Soldate
+5. Soldate d'élite
+6. Gardienne
+7. Gardienne d'élite
+8. Tirailleuse
+9. Tirailleuse d'élite
+10. Jeune légionnaire
+11. Légionnaire
+12. Légionnaire d'élite
+13. Jeune tank
+14. Tank
+15. Tank d'élite
 
-   Le bonus observé correspond à :
-
-       Attaque totale = FDF × 1.05^niveau
-
-   On recherche donc le niveau de mandibule à partir
-   du bonus fourni.
+Chaque ligne contient :
+[attaque, défense]
 */
 
+const stats = [
+    [3, 3],
+    [6, 4],
+    [8, 7],
+    [11, 10],
+    [17, 14],
+    [1, 27],
+    [1, 35],
+    [32, 10],
+    [40, 12],
+    [45, 35],
+    [60, 45],
+    [65, 50],
+    [80, 1],
+    [140, 1],
+    [160, 1]
+];
+
+
+/*
+===========================================================
+RÉCUPÉRATION DES QUANTITÉS
+===========================================================
+*/
+
+function getQuantites() {
+
+    const inputs =
+        document.querySelectorAll(
+            ".unit-table tbody input"
+        );
+
+    return Array.from(inputs).map(
+        input => Number(input.value) || 0
+    );
+}
+
+
+/*
+===========================================================
+CHANGEMENT ATTAQUE / DÉFENSE
+===========================================================
+*/
+
+function changerMode() {
+
+    const mode =
+        document.querySelector(
+            'input[name="mode"]:checked'
+        ).value;
+
+    document.getElementById(
+        "attaqueFields"
+    ).style.display =
+        mode === "attaque" ? "block" : "none";
+
+    document.getElementById(
+        "defenseFields"
+    ).style.display =
+        mode === "defense" ? "block" : "none";
+
+    document.getElementById(
+        "resultat"
+    ).innerHTML = "";
+}
+
+
+/*
+===========================================================
+ATTAQUE
+===========================================================
+
+FDF = somme des attaques.
+
+Attaque avec mandibule :
+
+FDF × 1.05^niveau
+===========================================================
+*/
 
 function calculerAttaque() {
 
-    const quantites =
-        document.querySelectorAll(".quantite");
-
-    const lignes =
-        document.querySelectorAll(".unit-table tbody tr");
+    const quantites = getQuantites();
 
     let fdf = 0;
 
-    for (let i = 0; i < lignes.length; i++) {
+    for (let i = 0; i < stats.length; i++) {
 
-        const quantite =
-            Number(quantites[i].value);
-
-        const attaque =
-            Number(lignes[i].children[2].textContent);
-
-        fdf += quantite * attaque;
+        fdf +=
+            quantites[i] *
+            stats[i][0];
     }
 
 
-    const bonus =
+    /*
+       Le bonus d'attaque entré correspond
+       à l'attaque observée.
+    */
+
+    const attaqueObservee =
         Number(
-            document.getElementById("bonusAttaque").value
+            document.getElementById(
+                "bonusAttaque"
+            ).value
         );
 
 
-    /*
-       Ici, le "bonus d'attaque" entré est considéré
-       comme l'attaque totale observée.
-
-       Si le nombre entré est un coefficient ou une
-       autre forme de bonus, cette partie pourra être
-       adaptée.
-    */
-
     let niveau = null;
 
-    if (fdf > 0 && bonus > 0) {
 
-        const ratio = bonus / fdf;
+    if (fdf > 0 && attaqueObservee > 0) {
 
-        const n = Math.log(ratio) / Math.log(1.05);
+        const ratio =
+            attaqueObservee / fdf;
+
+        const niveauExact =
+            Math.log(ratio) /
+            Math.log(1.05);
+
+        const niveauArrondi =
+            Math.round(niveauExact);
 
         /*
-           On accepte une petite marge d'erreur
-           liée aux arrondis du jeu.
+           Vérification avec le coefficient
+           exact du niveau trouvé.
         */
 
-        const niveauArrondi = Math.round(n);
-
-        const valeur =
+        const coefficient =
             Math.pow(1.05, niveauArrondi);
 
-        const erreur =
-            Math.abs(ratio - valeur);
+        const attaqueCalculee =
+            fdf * coefficient;
 
-        if (erreur < 0.01) {
+
+        /*
+           Tolérance de 0,5 % pour les éventuels
+           arrondis du jeu.
+        */
+
+        const erreur =
+            Math.abs(
+                attaqueCalculee -
+                attaqueObservee
+            ) / attaqueObservee;
+
+
+        if (erreur <= 0.005) {
             niveau = niveauArrondi;
         }
     }
 
 
-    let resultat = `
-        <strong>FDF :</strong>
-        ${formatNombre(fdf)}
-    `;
+    let resultat =
+        "<strong>FDF :</strong> " +
+        formatNombre(fdf);
 
 
     if (niveau !== null) {
 
-        resultat += `
-            <br>
-            <strong>Mandibule :</strong>
-            niveau ${niveau}
-        `;
+        resultat +=
+            "<br><strong>Mandibule :</strong> niveau " +
+            niveau;
 
     } else {
 
-        resultat += `
-            <br>
-            <strong>Mandibule :</strong>
-            impossible à déterminer
-        `;
+        resultat +=
+            "<br><strong>Mandibule :</strong> " +
+            "impossible à déterminer";
     }
 
 
-    document.getElementById("resultat").innerHTML =
-        resultat;
+    document.getElementById(
+        "resultat"
+    ).innerHTML = resultat;
 }
 
 
-/* =========================================================
-   DEFENSE
-   =========================================================
+/*
+===========================================================
+DÉFENSE
+===========================================================
 
-   Les unités sont tuées dans l'ordre du tableau.
+Les unités sont tuées dans l'ordre du tableau.
 
-   Exemple :
-   100 esclaves + 150 ME
-   avec 240 morts :
+Défense avant mandibule :
 
-   → 100 esclaves morts
-   → 140 ME morts
-   → 10 ME vivants
+défense des vivantes
++
+10 % de la défense des mortes
 
-   Défense avant mandibule :
+Puis :
 
-   défense vivante
-   +
-   (défense des morts × 10 %)
-
-   Puis :
-
-   défense finale =
-   défense avant mandibule × 1.05^niveau
+défense finale =
+défense avant mandibule × 1.05^niveau
+===========================================================
 */
-
 
 function calculerDefense() {
 
-    const quantites =
-        document.querySelectorAll(".quantite");
-
-    const lignes =
-        document.querySelectorAll(".unit-table tbody tr");
-
+    const quantites = getQuantites();
 
     let mortsRestants =
         Number(
-            document.getElementById("unitesTues").value
-        );
+            document.getElementById(
+                "unitesTues"
+            ).value
+        ) || 0;
+
 
     if (mortsRestants < 0) {
         mortsRestants = 0;
@@ -520,30 +569,28 @@ function calculerDefense() {
 
 
     let defenseVivante = 0;
-
     let defenseMorte = 0;
 
-    let totalUnites = 0;
 
+    /*
+       On parcourt les unités dans leur ordre
+       de destruction.
+    */
 
-    for (let i = 0; i < lignes.length; i++) {
+    for (let i = 0; i < stats.length; i++) {
 
-        let quantite =
-            Number(quantites[i].value);
+        const quantite =
+            quantites[i];
 
         const defense =
-            Number(lignes[i].children[3].textContent);
+            stats[i][1];
 
-
-        totalUnites += quantite;
-
-
-        /*
-           On tue les unités dans l'ordre du tableau.
-        */
 
         const tuees =
-            Math.min(quantite, mortsRestants);
+            Math.min(
+                quantite,
+                mortsRestants
+            );
 
 
         const vivantes =
@@ -553,20 +600,20 @@ function calculerDefense() {
         defenseMorte +=
             tuees * defense;
 
-
         defenseVivante +=
             vivantes * defense;
 
 
-        mortsRestants -= tuees;
+        mortsRestants -=
+            tuees;
     }
 
 
     /*
-       10 % de la défense des unités mortes
+       Les morts comptent pour 1/10
     */
 
-    const dixPourcent =
+    const dixPourcentMorts =
         defenseMorte * 0.10;
 
 
@@ -575,155 +622,124 @@ function calculerDefense() {
     */
 
     const defenseBase =
-        defenseVivante + dixPourcent;
+        defenseVivante +
+        dixPourcentMorts;
 
 
     /*
-       Le bonus de défense entré est la défense
-       totale observée.
-
-       On cherche donc le niveau n tel que :
-
-       défense totale =
-       défenseBase × 1.05^n
+       Bonus / défense observée
     */
 
-    const bonus =
+    const defenseObservee =
         Number(
-            document.getElementById("bonusDefense").value
+            document.getElementById(
+                "bonusDefense"
+            ).value
         );
 
 
     let niveau = null;
 
 
-    if (defenseBase > 0 && bonus > 0) {
+    if (
+        defenseBase > 0 &&
+        defenseObservee > 0
+    ) {
 
         const ratio =
-            bonus / defenseBase;
+            defenseObservee /
+            defenseBase;
 
-        const n =
-            Math.log(ratio) / Math.log(1.05);
+        const niveauExact =
+            Math.log(ratio) /
+            Math.log(1.05);
 
         const niveauArrondi =
-            Math.round(n);
+            Math.round(niveauExact);
 
-        const valeur =
-            Math.pow(1.05, niveauArrondi);
+
+        const coefficient =
+            Math.pow(
+                1.05,
+                niveauArrondi
+            );
+
+
+        const defenseCalculee =
+            defenseBase *
+            coefficient;
+
 
         const erreur =
-            Math.abs(ratio - valeur);
+            Math.abs(
+                defenseCalculee -
+                defenseObservee
+            ) / defenseObservee;
 
 
-        if (erreur < 0.01) {
-
-            niveau =
-                niveauArrondi;
+        if (erreur <= 0.005) {
+            niveau = niveauArrondi;
         }
     }
 
 
-    let resultat = `
-        <strong>Défense vivante :</strong>
-        ${formatNombre(defenseVivante)}
-        <br>
-
-        <strong>10 % des morts :</strong>
-        ${formatNombre(dixPourcent)}
-        <br>
-
-        <strong>Défense avant mandibule :</strong>
-        ${formatNombre(defenseBase)}
-    `;
+    let resultat =
+        "<strong>Défense :</strong> " +
+        formatNombre(defenseBase);
 
 
     if (niveau !== null) {
 
-        const defenseFinale =
-            defenseBase *
-            Math.pow(1.05, niveau);
+        resultat +=
+            "<br><strong>Défense avec mandibule :</strong> " +
+            formatNombre(
+                defenseBase *
+                Math.pow(1.05, niveau)
+            );
 
-
-        resultat += `
-            <br>
-
-            <strong>Défense totale :</strong>
-            ${formatNombre(defenseFinale)}
-
-            <br>
-
-            <strong>Mandibule :</strong>
-            niveau ${niveau}
-        `;
+        resultat +=
+            "<br><strong>Mandibule :</strong> niveau " +
+            niveau;
 
     } else {
 
-        resultat += `
-            <br>
-
-            <strong>Mandibule :</strong>
-            impossible à déterminer
-        `;
+        resultat +=
+            "<br><strong>Mandibule :</strong> " +
+            "impossible à déterminer";
     }
 
 
     if (mortsRestants > 0) {
 
-        resultat += `
-            <br><br>
-            ⚠️ Le nombre d'unités tuées dépasse
-            le nombre d'unités présentes.
-        `;
+        resultat +=
+            "<br><br>⚠️ Le nombre d'unités tuées " +
+            "dépasse le nombre d'unités présentes.";
     }
-
-
-    document.getElementById("resultat").innerHTML =
-        resultat;
-}
-
-
-/* =========================================================
-   CHANGEMENT DE MODE
-   ========================================================= */
-
-function changerMode() {
-
-    const mode =
-        document.querySelector(
-            'input[name="mode"]:checked'
-        ).value;
-
-
-    document.getElementById(
-        "attaqueFields"
-    ).style.display =
-        mode === "attaque" ? "block" : "none";
-
-
-    document.getElementById(
-        "defenseFields"
-    ).style.display =
-        mode === "defense" ? "block" : "none";
 
 
     document.getElementById(
         "resultat"
-    ).innerHTML = "";
+    ).innerHTML = resultat;
 }
 
 
-/* =========================================================
-   FORMAT DES NOMBRES
-   ========================================================= */
+/*
+===========================================================
+FORMAT DES NOMBRES
+===========================================================
+*/
 
 function formatNombre(nombre) {
 
-    return nombre.toLocaleString("fr-FR", {
-        maximumFractionDigits: 4
-    });
+    return nombre.toLocaleString(
+        "fr-FR",
+        {
+            maximumFractionDigits: 4
+        }
+    );
 }
 
 </script>
 
 </body>
-</html>
+                   </html>

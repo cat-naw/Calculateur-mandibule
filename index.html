@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur de combat</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        background: #e8d2a8;
+        color: #3b2818;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        color: #5a321c;
+        margin-bottom: 25px;
+    }
+
+    .container {
+        display: flex;
+        gap: 30px;
+        max-width: 1000px;
+        margin: auto;
+        align-items: flex-start;
+    }
+
+    .units {
+        flex: 1;
+    }
+
+    .unit-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #f3dfb9;
+        border: 2px solid #9b7046;
+    }
+
+    .unit-table th,
+    .unit-table td {
+        border: 1px solid #9b7046;
+        padding: 7px;
+        text-align: center;
+    }
+
+    .unit-table th {
+        color: #5a321c;
+    }
+
+    .unit-table input {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #9b7046;
+        background: #fff8e8;
+        color: #3b2818;
+        border-radius: 4px;
+    }
+
+    .side {
+        width: 280px;
+        background: #f3dfb9;
+        border: 2px solid #9b7046;
+        padding: 15px;
+    }
+
+    .mode {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .mode label {
+        cursor: pointer;
+    }
+
+    .mode input {
+        width: auto;
+    }
+
+    .field {
+        margin-bottom: 15px;
+    }
+
+    .field label {
+        display: block;
+        margin-bottom: 5px;
+        color: #5a321c;
+    }
+
+    .field input {
+        width: 100%;
+        padding: 7px;
+        border: 1px solid #9b7046;
+        background: #fff8e8;
+        color: #3b2818;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 100%;
+        padding: 9px;
+        margin-top: 5px;
+        border: 1px solid #9b7046;
+        border-radius: 4px;
+        background: #e8d2a8;
+        color: #3b2818;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #dcc397;
+    }
+
+    #resultat {
+        margin-top: 20px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 750px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .side {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Calculateur de combat</h1>
+
+<div class="container">
+
+    <div class="units">
+
+        <table class="unit-table">
+
+            <thead>
+                <tr>
+                    <th>Unité</th>
+                    <th>Nombre</th>
+                    <th>Attaque</th>
+                    <th>Défense</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Esclave</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+
+                <tr>
+                    <td>Maître esclave</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>6</td>
+                    <td>4</td>
+                </tr>
+
+                <tr>
+                    <td>Jeune soldate</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>8</td>
+                    <td>7</td>
+                </tr>
+
+                <tr>
+                    <td>Soldate</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>11</td>
+                    <td>10</td>
+                </tr>
+
+                <tr>
+                    <td>Soldate d'élite</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>17</td>
+                    <td>14</td>
+                </tr>
+
+                <tr>
+                    <td>Gardienne</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>1</td>
+                    <td>27</td>
+                </tr>
+
+                <tr>
+                    <td>Gardienne d'élite</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>1</td>
+                    <td>35</td>
+                </tr>
+
+                <tr>
+                    <td>Tirailleuse</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>32</td>
+                    <td>10</td>
+                </tr>
+
+                <tr>
+                    <td>Tirailleuse d'élite</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>40</td>
+                    <td>12</td>
+                </tr>
+
+                <tr>
+                    <td>Jeune légionnaire</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>45</td>
+                    <td>35</td>
+                </tr>
+
+                <tr>
+                    <td>Légionnaire</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>60</td>
+                    <td>45</td>
+                </tr>
+
+                <tr>
+                    <td>Légionnaire d'élite</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>65</td>
+                    <td>50</td>
+                </tr>
+
+                <tr>
+                    <td>Jeune tank</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>80</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>Tank</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>140</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>Tank d'élite</td>
+                    <td><input type="number" min="0" value="0" class="quantite"></td>
+                    <td>160</td>
+                    <td>1</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="side">
+
+        <div class="mode">
+
+            <label>
+                <input
+                    type="radio"
+                    name="mode"
+                    value="attaque"
+                    checked
+                    onchange="changerMode()">
+                Attaque
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="mode"
+                    value="defense"
+                    onchange="changerMode()">
+                Défense
+            </label>
+
+        </div>
+
+
+        <!-- MODE ATTAQUE -->
+
+        <div id="attaqueFields">
+
+            <div class="field">
+
+                <label>Bonus d'attaque</label>
+
+                <input
+                    type="number"
+                    id="bonusAttaque"
+                    value="0"
+                    step="any">
+
+            </div>
+
+            <button onclick="calculerAttaque()">
+                Calculer
+            </button>
+
+        </div>
+
+
+        <!-- MODE DEFENSE -->
+
+        <div id="defenseFields" style="display:none;">
+
+            <div class="field">
+
+                <label>Unités tuées</label>
+
+                <input
+                    type="number"
+                    id="unitesTues"
+                    value="0"
+                    min="0"
+                    step="1">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Bonus de défense</label>
+
+                <input
+                    type="number"
+                    id="bonusDefense"
+                    value="0"
+                    step="any">
+
+            </div>
+
+
+            <button onclick="calculerDefense()">
+                Calculer
+            </button>
+
+        </div>
+
+
+        <div id="resultat"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   ATTAQUE
+   =========================================================
+
+   FDF = somme des attaques des unités.
+
+   Le bonus observé correspond à :
+
+       Attaque totale = FDF × 1.05^niveau
+
+   On recherche donc le niveau de mandibule à partir
+   du bonus fourni.
+*/
+
+
+function calculerAttaque() {
+
+    const quantites =
+        document.querySelectorAll(".quantite");
+
+    const lignes =
+        document.querySelectorAll(".unit-table tbody tr");
+
+    let fdf = 0;
+
+    for (let i = 0; i < lignes.length; i++) {
+
+        const quantite =
+            Number(quantites[i].value);
+
+        const attaque =
+            Number(lignes[i].children[2].textContent);
+
+        fdf += quantite * attaque;
+    }
+
+
+    const bonus =
+        Number(
+            document.getElementById("bonusAttaque").value
+        );
+
+
+    /*
+       Ici, le "bonus d'attaque" entré est considéré
+       comme l'attaque totale observée.
+
+       Si le nombre entré est un coefficient ou une
+       autre forme de bonus, cette partie pourra être
+       adaptée.
+    */
+
+    let niveau = null;
+
+    if (fdf > 0 && bonus > 0) {
+
+        const ratio = bonus / fdf;
+
+        const n = Math.log(ratio) / Math.log(1.05);
+
+        /*
+           On accepte une petite marge d'erreur
+           liée aux arrondis du jeu.
+        */
+
+        const niveauArrondi = Math.round(n);
+
+        const valeur =
+            Math.pow(1.05, niveauArrondi);
+
+        const erreur =
+            Math.abs(ratio - valeur);
+
+        if (erreur < 0.01) {
+            niveau = niveauArrondi;
+        }
+    }
+
+
+    let resultat = `
+        <strong>FDF :</strong>
+        ${formatNombre(fdf)}
+    `;
+
+
+    if (niveau !== null) {
+
+        resultat += `
+            <br>
+            <strong>Mandibule :</strong>
+            niveau ${niveau}
+        `;
+
+    } else {
+
+        resultat += `
+            <br>
+            <strong>Mandibule :</strong>
+            impossible à déterminer
+        `;
+    }
+
+
+    document.getElementById("resultat").innerHTML =
+        resultat;
+}
+
+
+/* =========================================================
+   DEFENSE
+   =========================================================
+
+   Les unités sont tuées dans l'ordre du tableau.
+
+   Exemple :
+   100 esclaves + 150 ME
+   avec 240 morts :
+
+   → 100 esclaves morts
+   → 140 ME morts
+   → 10 ME vivants
+
+   Défense avant mandibule :
+
+   défense vivante
+   +
+   (défense des morts × 10 %)
+
+   Puis :
+
+   défense finale =
+   défense avant mandibule × 1.05^niveau
+*/
+
+
+function calculerDefense() {
+
+    const quantites =
+        document.querySelectorAll(".quantite");
+
+    const lignes =
+        document.querySelectorAll(".unit-table tbody tr");
+
+
+    let mortsRestants =
+        Number(
+            document.getElementById("unitesTues").value
+        );
+
+    if (mortsRestants < 0) {
+        mortsRestants = 0;
+    }
+
+
+    let defenseVivante = 0;
+
+    let defenseMorte = 0;
+
+    let totalUnites = 0;
+
+
+    for (let i = 0; i < lignes.length; i++) {
+
+        let quantite =
+            Number(quantites[i].value);
+
+        const defense =
+            Number(lignes[i].children[3].textContent);
+
+
+        totalUnites += quantite;
+
+
+        /*
+           On tue les unités dans l'ordre du tableau.
+        */
+
+        const tuees =
+            Math.min(quantite, mortsRestants);
+
+
+        const vivantes =
+            quantite - tuees;
+
+
+        defenseMorte +=
+            tuees * defense;
+
+
+        defenseVivante +=
+            vivantes * defense;
+
+
+        mortsRestants -= tuees;
+    }
+
+
+    /*
+       10 % de la défense des unités mortes
+    */
+
+    const dixPourcent =
+        defenseMorte * 0.10;
+
+
+    /*
+       Défense avant mandibule
+    */
+
+    const defenseBase =
+        defenseVivante + dixPourcent;
+
+
+    /*
+       Le bonus de défense entré est la défense
+       totale observée.
+
+       On cherche donc le niveau n tel que :
+
+       défense totale =
+       défenseBase × 1.05^n
+    */
+
+    const bonus =
+        Number(
+            document.getElementById("bonusDefense").value
+        );
+
+
+    let niveau = null;
+
+
+    if (defenseBase > 0 && bonus > 0) {
+
+        const ratio =
+            bonus / defenseBase;
+
+        const n =
+            Math.log(ratio) / Math.log(1.05);
+
+        const niveauArrondi =
+            Math.round(n);
+
+        const valeur =
+            Math.pow(1.05, niveauArrondi);
+
+        const erreur =
+            Math.abs(ratio - valeur);
+
+
+        if (erreur < 0.01) {
+
+            niveau =
+                niveauArrondi;
+        }
+    }
+
+
+    let resultat = `
+        <strong>Défense vivante :</strong>
+        ${formatNombre(defenseVivante)}
+        <br>
+
+        <strong>10 % des morts :</strong>
+        ${formatNombre(dixPourcent)}
+        <br>
+
+        <strong>Défense avant mandibule :</strong>
+        ${formatNombre(defenseBase)}
+    `;
+
+
+    if (niveau !== null) {
+
+        const defenseFinale =
+            defenseBase *
+            Math.pow(1.05, niveau);
+
+
+        resultat += `
+            <br>
+
+            <strong>Défense totale :</strong>
+            ${formatNombre(defenseFinale)}
+
+            <br>
+
+            <strong>Mandibule :</strong>
+            niveau ${niveau}
+        `;
+
+    } else {
+
+        resultat += `
+            <br>
+
+            <strong>Mandibule :</strong>
+            impossible à déterminer
+        `;
+    }
+
+
+    if (mortsRestants > 0) {
+
+        resultat += `
+            <br><br>
+            ⚠️ Le nombre d'unités tuées dépasse
+            le nombre d'unités présentes.
+        `;
+    }
+
+
+    document.getElementById("resultat").innerHTML =
+        resultat;
+}
+
+
+/* =========================================================
+   CHANGEMENT DE MODE
+   ========================================================= */
+
+function changerMode() {
+
+    const mode =
+        document.querySelector(
+            'input[name="mode"]:checked'
+        ).value;
+
+
+    document.getElementById(
+        "attaqueFields"
+    ).style.display =
+        mode === "attaque" ? "block" : "none";
+
+
+    document.getElementById(
+        "defenseFields"
+    ).style.display =
+        mode === "defense" ? "block" : "none";
+
+
+    document.getElementById(
+        "resultat"
+    ).innerHTML = "";
+}
+
+
+/* =========================================================
+   FORMAT DES NOMBRES
+   ========================================================= */
+
+function formatNombre(nombre) {
+
+    return nombre.toLocaleString("fr-FR", {
+        maximumFractionDigits: 4
+    });
+}
+
+</script>
+
+</body>
+</html>

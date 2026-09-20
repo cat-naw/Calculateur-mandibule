@@ -34,8 +34,6 @@
         align-items: flex-start;
     }
 
-    /* TABLEAU DES UNITÉS */
-
     .tableau {
         flex: 1;
         border: 2px solid #9b7046;
@@ -81,8 +79,6 @@
         color: #3b2818;
     }
 
-    /* PARTIE DROITE */
-
     .droite {
         width: 245px;
     }
@@ -118,8 +114,6 @@
         color: #3b2818;
     }
 
-    /* ATTAQUE / DÉFENSE */
-
     .mode {
         display: flex;
         justify-content: space-between;
@@ -136,8 +130,6 @@
         margin-right: 5px;
     }
 
-    /* BOUTON */
-
     .bouton {
         width: 100%;
         height: 45px;
@@ -153,8 +145,6 @@
     .bouton:hover {
         background: #417544;
     }
-
-    /* RÉSULTAT */
 
     #resultat {
         margin-top: 20px;
@@ -208,46 +198,23 @@
 
 <div class="conteneur">
 
-    <!-- TABLEAU DES UNITÉS -->
-
     <div class="tableau" id="tableauUnites"></div>
 
-
-    <!-- PARTIE DROITE -->
-
     <div class="droite">
-
-        <!-- TYPE D'ALLIANCE -->
 
         <div class="titre-section">Type d'alliance</div>
 
         <div class="champ">
-
             <select id="alliance">
-
-                <option value="1.10">
-                    Alliance guerrier (+10 %)
-                </option>
-
-                <option value="1.05">
-                    Neutre (+5 %)
-                </option>
-
-                <option value="1">
-                    Autre (aucun bonus)
-                </option>
-
+                <option value="1.10">Alliance guerrier (+10 %)</option>
+                <option value="1.05">Neutre (+5 %)</option>
+                <option value="1">Autre (aucun bonus)</option>
             </select>
-
         </div>
-
-
-        <!-- ATTAQUE / DÉFENSE -->
 
         <div class="titre-section">Type de combat</div>
 
         <div class="mode">
-
             <label>
                 <input
                     type="radio"
@@ -266,43 +233,27 @@
                     onchange="changerMode()">
                 Défense
             </label>
-
         </div>
-
-
-        <!-- ATTAQUE -->
 
         <div id="attaqueFields">
 
             <div class="champ">
-
-                <div class="label">
-                    Bonus d'attaque
-                </div>
+                <div class="label">Bonus d'attaque</div>
 
                 <input
                     id="bonusAttaque"
                     type="number"
                     min="0"
-                    step="any"
+                    step="1"
                     value="0">
-
             </div>
 
         </div>
 
-
-        <!-- DÉFENSE -->
-
-        <div
-            id="defenseFields"
-            style="display:none;">
+        <div id="defenseFields" style="display:none;">
 
             <div class="champ">
-
-                <div class="label">
-                    Unités tuées
-                </div>
+                <div class="label">Unités tuées</div>
 
                 <input
                     id="unitesTues"
@@ -310,35 +261,24 @@
                     min="0"
                     step="1"
                     value="0">
-
             </div>
 
             <div class="champ">
-
-                <div class="label">
-                    Bonus de défense
-                </div>
+                <div class="label">Bonus de défense</div>
 
                 <input
                     id="bonusDefense"
                     type="number"
                     min="0"
-                    step="any"
+                    step="1"
                     value="0">
-
             </div>
 
         </div>
 
-
-        <!-- BOUTON -->
-
         <button class="bouton" onclick="calculer()">
             Calculer
         </button>
-
-
-        <!-- RÉSULTAT -->
 
         <div id="resultat"></div>
 
@@ -351,12 +291,11 @@
 
 /* =========================================================
    UNITÉS
-
    [Nom, Attaque, Défense]
 
    L'ordre est l'ordre dans lequel les unités
    sont tuées.
-   ========================================================= */
+========================================================= */
 
 const unites = [
 
@@ -381,11 +320,10 @@ const unites = [
 
 /* =========================================================
    CRÉATION DU TABLEAU
-   ========================================================= */
+========================================================= */
 
 const tableau =
     document.getElementById("tableauUnites");
-
 
 unites.forEach((unite, index) => {
 
@@ -394,13 +332,11 @@ unites.forEach((unite, index) => {
 
     ligne.className = "ligne";
 
-
     const nom =
         document.createElement("div");
 
     nom.className = "nom-unite";
     nom.textContent = unite[0];
-
 
     const input =
         document.createElement("input");
@@ -412,18 +348,16 @@ unites.forEach((unite, index) => {
     input.value = "0";
     input.id = "unite-" + index;
 
-
     ligne.appendChild(nom);
     ligne.appendChild(input);
 
     tableau.appendChild(ligne);
-
 });
 
 
 /* =========================================================
    CHANGEMENT ATTAQUE / DÉFENSE
-   ========================================================= */
+========================================================= */
 
 function changerMode() {
 
@@ -432,14 +366,12 @@ function changerMode() {
             'input[name="mode"]:checked'
         ).value;
 
-
     document.getElementById(
         "attaqueFields"
     ).style.display =
         mode === "attaque"
         ? "block"
         : "none";
-
 
     document.getElementById(
         "defenseFields"
@@ -448,17 +380,15 @@ function changerMode() {
         ? "block"
         : "none";
 
-
     document.getElementById(
         "resultat"
     ).innerHTML = "";
-
 }
 
 
 /* =========================================================
    RÉCUPÉRATION DES QUANTITÉS
-   ========================================================= */
+========================================================= */
 
 function getQuantites() {
 
@@ -471,13 +401,12 @@ function getQuantites() {
         ) || 0;
 
     });
-
 }
 
 
 /* =========================================================
    CALCUL PRINCIPAL
-   ========================================================= */
+========================================================= */
 
 function calculer() {
 
@@ -485,7 +414,6 @@ function calculer() {
         document.querySelector(
             'input[name="mode"]:checked'
         ).value;
-
 
     if (mode === "attaque") {
 
@@ -496,34 +424,87 @@ function calculer() {
         calculerDefense();
 
     }
+}
 
+
+/* =========================================================
+   TROUVER LA MANDIBULE
+=========================================================
+
+   La formule utilisée est :
+
+   Bonus = FDF × (1,05^niveau × alliance - 1)
+
+   On teste les niveaux entiers de 0 à 250
+   et on retient celui dont le bonus calculé
+   est le plus proche du bonus fourni.
+========================================================= */
+
+function trouverMandibule(
+    base,
+    bonusObserve,
+    alliance
+) {
+
+    let meilleurNiveau = 0;
+    let meilleureErreur = Infinity;
+
+    for (
+        let niveau = 0;
+        niveau <= 250;
+        niveau++
+    ) {
+
+        const coefficientMandibule =
+            Math.pow(1.05, niveau);
+
+        const coefficientTotal =
+            coefficientMandibule * alliance;
+
+        const bonusTheorique =
+            base *
+            (coefficientTotal - 1);
+
+        const erreur =
+            Math.abs(
+                bonusTheorique -
+                bonusObserve
+            );
+
+        if (erreur < meilleureErreur) {
+
+            meilleureErreur = erreur;
+            meilleurNiveau = niveau;
+
+        }
+    }
+
+    return meilleurNiveau;
 }
 
 
 /* =========================================================
    CALCUL ATTAQUE
-   =========================================================
-
-   FDF = somme des attaques des unités.
-
-   Bonus d'attaque = bonus ajouté à la FDF.
-
-   Attaque totale :
-
-   (FDF + bonus)
-   × 1,05^mandibule
-   × bonus d'alliance
-   ========================================================= */
+========================================================= */
 
 function calculerAttaque() {
 
-    const quantites = getQuantites();
-
+    const quantites =
+        getQuantites();
 
     let fdf = 0;
 
 
-    for (let i = 0; i < unites.length; i++) {
+    /*
+       FDF = somme des attaques
+       de toutes les unités.
+    */
+
+    for (
+        let i = 0;
+        i < unites.length;
+        i++
+    ) {
 
         fdf +=
             quantites[i] *
@@ -548,104 +529,57 @@ function calculerAttaque() {
         );
 
 
-    /*
-       Valeur de l'attaque sans mandibule
-       mais avec le bonus d'attaque.
-    */
+    if (fdf <= 0) {
 
-    const base =
-        fdf + bonus;
+        document.getElementById(
+            "resultat"
+        ).innerHTML = "";
 
-
-    let meilleurNiveau = 0;
-    let meilleureErreur = Infinity;
-
-
-    /*
-       Recherche du niveau de mandibule.
-
-       On teste les niveaux entiers.
-    */
-
-    for (let niveau = 0; niveau <= 250; niveau++) {
-
-        const attaque =
-            base *
-            Math.pow(1.05, niveau) *
-            alliance;
-
-
-        /*
-           Pour l'instant, le bonus est la valeur
-           fournie directement. Le niveau donnant
-           la valeur la plus cohérente est recherché.
-        */
-
-        const erreur =
-            Math.abs(
-                attaque -
-                base
-            );
-
-
-        if (erreur < meilleureErreur) {
-
-            meilleureErreur = erreur;
-            meilleurNiveau = niveau;
-
-        }
-
+        return;
     }
 
 
     /*
-       FDF affichée séparément.
+       Recherche de la mandibule.
     */
 
-    let texte =
-        "FDF : " +
-        formatNombre(fdf);
+    const niveau =
+        trouverMandibule(
+            fdf,
+            bonus,
+            alliance
+        );
 
 
-    texte +=
-        "<br>Mandibule : niveau " +
-        meilleurNiveau;
+    /*
+       La valeur affichée avant parenthèses
+       est la FDF en attaque.
 
+       Le bonus est affiché entre parenthèses.
+    */
 
     document.getElementById(
         "resultat"
-    ).innerHTML = texte;
-
+    ).innerHTML =
+        "FDF : " +
+        Math.round(fdf) +
+        "(+" +
+        Math.round(bonus) +
+        ")" +
+        "<br>" +
+        "Mandibule : niveau " +
+        niveau;
 }
 
 
 /* =========================================================
    CALCUL DÉFENSE
-   =========================================================
-
-   Les unités sont tuées dans l'ordre du tableau.
-
-   Défense :
-
-   défense des unités vivantes
-   +
-   10 % de la défense des unités mortes.
-
-   Le bonus de défense s'applique également
-   aux 10 % provenant des unités mortes.
-
-   Défense :
-
-   (défense vivante
-   + défense morte × 10 %)
-   + bonus de défense
-
-   puis bonus de mandibule et d'alliance.
-   ========================================================= */
+========================================================= */
 
 function calculerDefense() {
 
-    const quantites = getQuantites();
+    const quantites =
+        getQuantites();
 
 
     let mortsRestants =
@@ -661,14 +595,18 @@ function calculerDefense() {
 
 
     /*
-       Parcours dans l'ordre de destruction.
+       Les unités sont tuées dans l'ordre
+       du tableau.
     */
 
-    for (let i = 0; i < unites.length; i++) {
+    for (
+        let i = 0;
+        i < unites.length;
+        i++
+    ) {
 
         const quantite =
             quantites[i];
-
 
         const defense =
             unites[i][2];
@@ -695,12 +633,12 @@ function calculerDefense() {
 
         mortsRestants -=
             tuees;
-
     }
 
 
     /*
-       10 % de la défense des unités mortes.
+       Les unités mortes comptent pour 1/10
+       de leur défense.
     */
 
     const defenseDesMorts =
@@ -708,7 +646,7 @@ function calculerDefense() {
 
 
     /*
-       Défense de base avant les bonus.
+       Défense avant bonus.
     */
 
     const defenseBase =
@@ -724,16 +662,6 @@ function calculerDefense() {
         ) || 0;
 
 
-    /*
-       Le bonus de défense s'applique
-       également à la partie correspondant
-       aux unités mortes.
-    */
-
-    const defenseAvecBonus =
-        (defenseBase + bonus);
-
-
     const alliance =
         Number(
             document.getElementById(
@@ -742,87 +670,53 @@ function calculerDefense() {
         );
 
 
+    if (defenseBase <= 0) {
+
+        document.getElementById(
+            "resultat"
+        ).innerHTML = "";
+
+        return;
+    }
+
+
     /*
        Recherche de la mandibule.
     */
 
-    let meilleurNiveau = 0;
-    let meilleureErreur = Infinity;
+    const niveau =
+        trouverMandibule(
+            defenseBase,
+            bonus,
+            alliance
+        );
 
 
     /*
-       Comme le bonus saisi est le bonus fourni
-       par le combat, on recherche le niveau
-       correspondant.
+       En défense, on affiche la défense
+       calculée avant mandibule sous la forme
+       base(+bonus).
     */
-
-    for (let niveau = 0; niveau <= 250; niveau++) {
-
-        const defense =
-            defenseAvecBonus *
-            Math.pow(1.05, niveau) *
-            alliance;
-
-
-        const erreur =
-            Math.abs(
-                defense -
-                defenseAvecBonus
-            );
-
-
-        if (erreur < meilleureErreur) {
-
-            meilleureErreur = erreur;
-            meilleurNiveau = niveau;
-
-        }
-
-    }
-
-
-    let texte =
-        "Défense de base : " +
-        formatNombre(defenseBase);
-
-
-    texte +=
-        "<br>Mandibule : niveau " +
-        meilleurNiveau;
-
-
-    if (mortsRestants > 0) {
-
-        texte +=
-            "<br><br>⚠️ Nombre d'unités tuées supérieur " +
-            "au nombre d'unités présentes.";
-
-    }
-
 
     document.getElementById(
         "resultat"
-    ).innerHTML = texte;
-
+    ).innerHTML =
+        "FDF : " +
+        Math.round(defenseBase) +
+        "(+" +
+        Math.round(bonus) +
+        ")" +
+        "<br>" +
+        "Mandibule : niveau " +
+        niveau;
 }
 
 
 /* =========================================================
-   FORMAT DES NOMBRES
-   ========================================================= */
-
-function formatNombre(nombre) {
-
-    return nombre.toLocaleString(
-        "fr-FR",
-        {
-            maximumFractionDigits: 4
-        }
-    );
-
-}
+   FIN
+========================================================= */
 
 </script>
 
 </body>
-</html>
+   </html>
